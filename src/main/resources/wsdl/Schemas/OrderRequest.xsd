@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ws.aminerals.cl/Ariba/OrderRequest"
+            targetNamespace="http://ws.aminerals.cl/Ariba/OrderRequest" elementFormDefault="qualified">
+  <xsd:element nillable="true" name="cXML">
+    <xsd:complexType>
+      <xsd:all>
+        <xsd:element nillable="true" name="Header">
+          <xsd:complexType>
+            <xsd:all>
+              <xsd:element nillable="true" name="From">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element nillable="true" maxOccurs="unbounded" minOccurs="0" name="Credential">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Identity" type="xsd:string"/>
+                        </xsd:sequence>
+                        <xsd:attribute use="optional" name="Domain" type="xsd:string"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element nillable="true" name="To">
+                <xsd:complexType>
+                  <xsd:all>
+                    <xsd:element nillable="true" name="Credential">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Identity" type="xsd:string"/>
+                        </xsd:sequence>
+                        <xsd:attribute use="optional" name="Domain" type="xsd:string"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element nillable="true" name="Correspondent">
+                      <!--Agregado 2020-04-20-->
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element nillable="true" maxOccurs="2" minOccurs="0" name="Contact">
+                            <!--Agregado 2020-04-20-->
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Name">
+                                  <xsd:complexType>
+                                    <xsd:simpleContent>
+                                      <xsd:extension base="xsd:string">
+                                        <xsd:attribute use="optional" name="xmlLang" type="xsd:string"/>
+                                      </xsd:extension>
+                                    </xsd:simpleContent>
+                                  </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element nillable="true" maxOccurs="unbounded" minOccurs="0" name="PostalAddress">
+                                  <!--Agregado 2017-02-17-->
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element nillable="true" maxOccurs="4" minOccurs="0" name="Street"
+                                                   type="xsd:string"/>
+                                      <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="City"
+                                                   type="xsd:string"/>
+                                      <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="State"
+                                                   type="xsd:string"/>
+                                      <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="PostalCode"
+                                                   type="xsd:string"/>
+                                      <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Country">
+                                        <xsd:complexType>
+                                          <xsd:simpleContent>
+                                            <xsd:extension base="xsd:string">
+                                              <xsd:attribute use="optional" name="isoCountryCode" type="xsd:string"/>
+                                            </xsd:extension>
+                                          </xsd:simpleContent>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                    </xsd:sequence>
+                                  </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Email">
+                                  <xsd:complexType>
+                                    <xsd:simpleContent>
+                                      <xsd:extension base="xsd:string">
+                                        <xsd:attribute use="optional" name="name" type="xsd:string"/>
+                                      </xsd:extension>
+                                    </xsd:simpleContent>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                              <xsd:attribute use="optional" name="role" type="xsd:string"/>
+                              <xsd:attribute use="optional" name="addressID" type="xsd:string"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                        <xsd:attribute use="optional" name="preferredLanguage" type="xsd:string"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:all>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element nillable="true" name="Sender">
+                <xsd:complexType>
+                  <xsd:all>
+                    <xsd:element nillable="true" name="Credential">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Identity" type="xsd:string"/>
+                          <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="SharedSecret"
+                                       type="xsd:string"/>
+                        </xsd:sequence>
+                        <xsd:attribute use="optional" name="Domain" type="xsd:string"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="UserAgent" type="xsd:string"/>
+                  </xsd:all>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:all>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element nillable="true" name="Request">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element nillable="true" name="OrderRequest">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element nillable="true" name="OrderRequestHeader">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element nillable="true" name="Total">
+                            <xsd:complexType>
+                              <xsd:all>
+                                <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Money">
+                                  <xsd:complexType>
+                                    <xsd:simpleContent>
+                                      <xsd:extension base="xsd:decimal">
+                                        <xsd:attribute use="optional" name="alternateAmount" type="xsd:string"/>
+                                        <xsd:attribute use="optional" name="alternateCurrency" type="xsd:string"/>
+                                        <xsd:attribute use="optional" name="currency" type="xsd:string"/>
+                                      </xsd:extension>
+                                    </xsd:simpleContent>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:all>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element nillable="true" name="ShipTo">
+                            <xsd:complexType>
+                              <xsd:all>
+                                <xsd:element nillable="true" name="Address">
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Name">
+                                        <xsd:complexType>
+                                          <xsd:simpleContent>
+                                            <xsd:extension base="xsd:string">
+                                              <xsd:attribute use="optional" name="lang" type="xsd:string"/>
+                                            </xsd:extension>
+                                          </xsd:simpleContent>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                      <xsd:element nillable="true" maxOccurs="unbounded" minOccurs="0"
+                                                   name="PostalAddress">
+                                        <!--Agregado 2017-02-17-->
+                                        <xsd:complexType>
+                                          <xsd:sequence>
+                                            <xsd:element nillable="true" maxOccurs="3" minOccurs="0" name="DeliverTo"
+                                                         type="xsd:string"/>
+                                            <xsd:element nillable="true" maxOccurs="4" minOccurs="0" name="Street"
+                                                         type="xsd:string"/>
+                                            <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="City"
+                                                         type="xsd:string"/>
+                                            <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="State"
+                                                         type="xsd:string"/>
+                                            <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="PostalCode"
+                                                         type="xsd:string"/>
+                                            <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Country">
+                                              <xsd:complexType>
+                                                <xsd:simpleContent>
+                                                  <xsd:extension base="xsd:string">
+                                                    <xsd:attribute use="optional" name="isoCountryCode"
+                                                                   type="xsd:string"/>
+                                                  </xsd:extension>
+                                                </xsd:simpleContent>
+                                              </xsd:complexType>
+                                            </xsd:element>
+                                          </xsd:sequence>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                      <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Email">
+                                        <xsd:complexType>
+                                          <xsd:simpleContent>
+                                            <xsd:extension base="xsd:string">
+                                              <xsd:attribute use="optional" name="name" type="xsd:string"/>
+                                              <!--<xsd:attribute use="optional" name="preferredLang" type="xsd:string"/>-->
+                                            </xsd:extension>
+                                          </xsd:simpleContent>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                      <xsd:element nillable="true" maxOccurs="unbounded" minOccurs="0" name="Phone">
+                                        <!--Agregado 2017-02-17-->
+                                        <xsd:complexType>
+                                          <xsd:sequence>
+                                            <xsd:element nillable="true" maxOccurs="1" minOccurs="0"
+                                                         name="TelephoneNumber">
+                                              <xsd:complexType>
+                                                <xsd:sequence>
+                                                  <xsd:element nillable="true" maxOccurs="1" minOccurs="0"
+                                                               name="AreaOrCityCode" type="xsd:string"/>
+                                                  <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Number"
+                                                               type="xsd:string"/>
+                                                  <xsd:element nillable="true" maxOccurs="1" minOccurs="0"
+                                                               name="CountryCode">
+                                                    <xsd:complexType>
+                                                      <xsd:simpleContent>
+                                                        <xsd:extension base="xsd:string">
+                                                          <xsd:attribute use="optional" name="isoCountryCode"
+                                                                         type="xsd:string"/>
+                                                        </xsd:extension>
+                                                      </xsd:simpleContent>
+                                                    </xsd:complexType>
+                                                  </xsd:element>
+                                                </xsd:sequence>
+                                              </xsd:complexType>
+                                            </xsd:element>
+                                          </xsd:sequence>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                    </xsd:sequence>
+                                    <xsd:attribute use="optional" name="addressID" type="xsd:string"/>
+                                    <xsd:attribute use="optional" name="isoCountryCode" type="xsd:string"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:all>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element nillable="true" name="BillTo">
+                            <xsd:complexType>
+                              <xsd:all>
+                                <xsd:element nillable="true" name="Address">
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Name">
+                                        <xsd:complexType>
+                                          <xsd:simpleContent>
+                                            <xsd:extension base="xsd:string">
+                                              <xsd:attribute use="optional" name="xmlLang" type="xsd:string"/>
+                                            </xsd:extension>
+                                          </xsd:simpleContent>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                      <xsd:element nillable="true" maxOccurs="unbounded" minOccurs="0"
+                                                   name="PostalAddress">
+                                        <!--Agregado 2017-02-17-->
+                                        <xsd:complexType>
+                                          <xsd:sequence>
+                                            <xsd:element nillable="true" maxOccurs="4" minOccurs="0" name="Street"
+                                                         type="xsd:string"/>
+                                            <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="City"
+                                                         type="xsd:string"/>
+                                            <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Municipality"
+                                                         type="xsd:string"/>
+                                            <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="State"
+                                                         type="xsd:string"/>
+                                            <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="PostalCode"
+                                                         type="xsd:string"/>
+                                            <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Country">
+                                              <xsd:complexType>
+                                                <xsd:simpleContent>
+                                                  <xsd:extension base="xsd:string">
+                                                    <xsd:attribute use="optional" name="isoCountryCode"
+                                                                   type="xsd:string"/>
+                                                  </xsd:extension>
+                                                </xsd:simpleContent>
+                                              </xsd:complexType>
+                                            </xsd:element>
+                                          </xsd:sequence>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                      <xsd:element nillable="true" maxOccurs="2" minOccurs="0" name="IdReference">
+                                        <!--Agregado 2017-02-17-->
+                                        <xsd:complexType>
+                                          <xsd:simpleContent>
+                                            <xsd:extension base="xsd:string">
+                                              <xsd:attribute use="optional" name="domain" type="xsd:string"/>
+                                              <xsd:attribute use="optional" name="identifier" type="xsd:string"/>
+                                            </xsd:extension>
+                                          </xsd:simpleContent>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                    </xsd:sequence>
+                                    <xsd:attribute use="optional" name="addressID" type="xsd:string"/>
+                                    <xsd:attribute use="optional" name="isoCountryCode" type="xsd:string"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:all>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="PaymentTerm">
+                            <!--Agregado 2017-02-17-->
+                            <xsd:complexType>
+                              <xsd:simpleContent>
+                                <xsd:extension base="xsd:string">
+                                  <xsd:attribute use="optional" name="payInNumberOfDays" type="xsd:string"/>
+                                </xsd:extension>
+                              </xsd:simpleContent>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element nillable="true" maxOccurs="2" minOccurs="0" name="Contact">
+                            <!--Agregado 2017-02-17-->
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Name">
+                                  <xsd:complexType>
+                                    <xsd:simpleContent>
+                                      <xsd:extension base="xsd:string">
+                                        <xsd:attribute use="optional" name="xmlLang" type="xsd:string"/>
+                                      </xsd:extension>
+                                    </xsd:simpleContent>
+                                  </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element nillable="true" maxOccurs="unbounded" minOccurs="0" name="PostalAddress">
+                                  <!--Agregado 2017-02-17-->
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element nillable="true" maxOccurs="4" minOccurs="0" name="Street"
+                                                   type="xsd:string"/>
+                                      <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="City"
+                                                   type="xsd:string"/>
+                                      <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Municipality"
+                                                   type="xsd:string"/>
+                                      <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="State"
+                                                   type="xsd:string"/>
+                                      <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="PostalCode"
+                                                   type="xsd:string"/>
+                                      <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Country">
+                                        <xsd:complexType>
+                                          <xsd:simpleContent>
+                                            <xsd:extension base="xsd:string">
+                                              <xsd:attribute use="optional" name="isoCountryCode" type="xsd:string"/>
+                                            </xsd:extension>
+                                          </xsd:simpleContent>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                    </xsd:sequence>
+                                  </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Email">
+                                  <xsd:complexType>
+                                    <xsd:simpleContent>
+                                      <xsd:extension base="xsd:string">
+                                        <xsd:attribute use="optional" name="name" type="xsd:string"/>
+                                      </xsd:extension>
+                                    </xsd:simpleContent>
+                                  </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element nillable="true" maxOccurs="unbounded" minOccurs="0" name="Phone">
+                                  <!--Agregado 2017-02-17-->
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="TelephoneNumber">
+                                        <xsd:complexType>
+                                          <xsd:sequence>
+                                            <xsd:element nillable="true" maxOccurs="1" minOccurs="0"
+                                                         name="AreaOrCityCode" type="xsd:string"/>
+                                            <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Number"
+                                                         type="xsd:string"/>
+                                            <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="CountryCode">
+                                              <xsd:complexType>
+                                                <xsd:simpleContent>
+                                                  <xsd:extension base="xsd:string">
+                                                    <xsd:attribute use="optional" name="isoCountryCode"
+                                                                   type="xsd:string"/>
+                                                  </xsd:extension>
+                                                </xsd:simpleContent>
+                                              </xsd:complexType>
+                                            </xsd:element>
+                                          </xsd:sequence>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                    </xsd:sequence>
+                                  </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element nillable="true" maxOccurs="2" minOccurs="0" name="IdReference">
+                                  <!--Agregado 2017-02-17-->
+                                  <xsd:complexType>
+                                    <xsd:simpleContent>
+                                      <xsd:extension base="xsd:string">
+                                        <xsd:attribute use="optional" name="domain" type="xsd:string"/>
+                                        <xsd:attribute use="optional" name="identifier" type="xsd:string"/>
+                                      </xsd:extension>
+                                    </xsd:simpleContent>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                              <xsd:attribute use="optional" name="role" type="xsd:string"/>
+                              <xsd:attribute use="optional" name="addressID" type="xsd:string"/>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="buyerVatID" type="xsd:string"/>
+                          <!--Agregado 2019-12-09-->
+                          <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="supplierVatID"
+                                       type="xsd:string"/>
+                          <!--Agregado 2019-12-09-->
+                          <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Comments" type="xsd:string"/>
+                          <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="extTransactionCategoryOrType"
+                                       type="xsd:string"/><!--Agregado 2020-04-17-->
+                          <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="extCompanyCode"
+                                       type="xsd:string"/>
+                          <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="extPUName" type="xsd:string"/>
+                          <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="extCodTipoFlete"
+                                       type="xsd:string"/>
+                          <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="extDescCodTipoFlete"
+                                       type="xsd:string"/>
+                          <!--<xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="extNotaOrden" type="xsd:string"/>
+                                  <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="extClausulasEspeciales" type="xsd:string"/>-->
+                          <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="extClaseDocSAP"
+                                       type="xsd:string"/>
+                          <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="extIncoTerm"
+                                       type="xsd:string"/>
+                          <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="extIncoTerm2"
+                                       type="xsd:string"/>
+                          <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="extNombreAdminContrato"
+                                       type="xsd:string"/>
+                          <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="extRutAdminContrato"
+                                       type="xsd:string"/>
+                          <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="extNotasGenerales"
+                                       type="xsd:string"/>
+                          <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="extClausulasGenerales"
+                                       type="xsd:string"/>
+                          <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="extClausulasEspecificas"
+                                       type="xsd:string"/>
+                        </xsd:sequence>
+                        <xsd:attribute use="optional" name="agreementID" type="xsd:string"/>
+                        <xsd:attribute use="optional" name="agreementPayloadID" type="xsd:string"/>
+                        <xsd:attribute use="optional" name="orderDate" type="xsd:dateTime"/>
+                        <xsd:attribute use="optional" name="orderID" type="xsd:string"/>
+                        <xsd:attribute use="optional" name="orderType" type="xsd:string"/>
+                        <xsd:attribute use="optional" name="orderVersion" type="xsd:string"/>
+                        <xsd:attribute use="optional" name="type" type="xsd:string"/>
+                        <xsd:attribute use="optional" name="requestedDeliveryDate" type="xsd:string"/>
+                        <!--Agregado 2017-02-17-->
+                        <xsd:attribute use="optional" name="effectiveDate" type="xsd:dateTime"/>
+                        <xsd:attribute use="optional" name="expirationDate" type="xsd:dateTime"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element nillable="true" maxOccurs="unbounded" minOccurs="0" name="ItemOut">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element nillable="true" maxOccurs="unbounded" minOccurs="0" name="BlanketItemDetail">
+                            <!--Agregado 2017-02-17-->
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="UnitPrice">
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Money">
+                                        <xsd:complexType>
+                                          <xsd:simpleContent>
+                                            <xsd:extension base="xsd:string">
+                                              <xsd:attribute use="optional" name="currency" type="xsd:string"/>
+                                            </xsd:extension>
+                                          </xsd:simpleContent>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                    </xsd:sequence>
+                                  </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Description">
+                                  <xsd:complexType>
+                                    <xsd:simpleContent>
+                                      <xsd:extension base="xsd:string">
+                                        <xsd:attribute use="optional" name="lang" type="xsd:string"/>
+                                      </xsd:extension>
+                                    </xsd:simpleContent>
+                                  </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="UnitOfMeasure"
+                                             type="xsd:string"/>
+                                <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Classification">
+                                  <xsd:complexType>
+                                    <xsd:simpleContent>
+                                      <xsd:extension base="xsd:string">
+                                        <xsd:attribute use="optional" name="domain" type="xsd:string"/>
+                                      </xsd:extension>
+                                    </xsd:simpleContent>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Comments" type="xsd:string"/>
+                          <xsd:element nillable="true" name="ItemID">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="SupplierPartID"
+                                             type="xsd:string"/>
+                                <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="BuyerPartID"
+                                             type="xsd:string"/>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element nillable="true" minOccurs="0" name="ItemDetail">
+                            <xsd:complexType>
+                              <xsd:all>
+                                <xsd:element nillable="true" name="UnitPrice">
+                                  <xsd:complexType>
+                                    <xsd:all>
+                                      <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Money">
+                                        <xsd:complexType>
+                                          <xsd:simpleContent>
+                                            <xsd:extension base="xsd:decimal">
+                                              <xsd:attribute use="optional" name="alternateAmount" type="xsd:string"/>
+                                              <xsd:attribute use="optional" name="alternateCurrency" type="xsd:string"/>
+                                              <xsd:attribute use="optional" name="currency" type="xsd:string"/>
+                                            </xsd:extension>
+                                          </xsd:simpleContent>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                    </xsd:all>
+                                  </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Description">
+                                  <xsd:complexType>
+                                    <xsd:simpleContent>
+                                      <xsd:extension base="xsd:string">
+                                        <xsd:attribute use="optional" name="xmlLang" type="xsd:string"/>
+                                      </xsd:extension>
+                                    </xsd:simpleContent>
+                                  </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="UnitOfMeasure"
+                                             type="xsd:string"/>
+                                <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="ManufacturerPartID"
+                                             type="xsd:string"/>
+                                <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="ManufacturerName"
+                                             type="xsd:string"/>
+                                <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Classification">
+                                  <xsd:complexType>
+                                    <xsd:simpleContent>
+                                      <xsd:extension base="xsd:string">
+                                        <xsd:attribute use="optional" name="domain" type="xsd:string"/>
+                                      </xsd:extension>
+                                    </xsd:simpleContent>
+                                  </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="LeadTime"
+                                             type="xsd:string"/>
+                                <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="extReqLineNum"
+                                             type="xsd:string"/>
+                                <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="extRequester"
+                                             type="xsd:string"/>
+                                <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="extPRNum"
+                                             type="xsd:string"/>
+                                <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="extContractId"
+                                             type="xsd:string"/>
+                                <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="extBodegaMatRepos"
+                                             type="xsd:string"/>
+                                <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="extDescBodegaDestino"
+                                             type="xsd:string"/>
+                                <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="extNumCotizacion"
+                                             type="xsd:string"/>
+                              </xsd:all>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element nillable="true" minOccurs="0" name="Tax">
+                            <xsd:complexType>
+                              <xsd:all>
+                                <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Description">
+                                  <xsd:complexType>
+                                    <xsd:simpleContent>
+                                      <xsd:extension base="xsd:string">
+                                        <xsd:attribute use="optional" name="xmlLang" type="xsd:string"/>
+                                      </xsd:extension>
+                                    </xsd:simpleContent>
+                                  </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element nillable="true" name="TaxDetail">
+                                  <xsd:complexType>
+                                    <xsd:all>
+                                      <xsd:element nillable="true" name="TaxableAmount">
+                                        <xsd:complexType>
+                                          <xsd:all>
+                                            <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Money">
+                                              <xsd:complexType>
+                                                <xsd:simpleContent>
+                                                  <xsd:extension base="xsd:decimal">
+                                                    <xsd:attribute use="optional" name="alternateAmount"
+                                                                   type="xsd:string"/>
+                                                    <xsd:attribute use="optional" name="alternateCurrency"
+                                                                   type="xsd:string"/>
+                                                    <xsd:attribute use="optional" name="currency" type="xsd:string"/>
+                                                  </xsd:extension>
+                                                </xsd:simpleContent>
+                                              </xsd:complexType>
+                                            </xsd:element>
+                                          </xsd:all>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                      <xsd:element nillable="true" name="TaxAmount">
+                                        <xsd:complexType>
+                                          <xsd:all>
+                                            <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Money">
+                                              <xsd:complexType>
+                                                <xsd:simpleContent>
+                                                  <xsd:extension base="xsd:decimal">
+                                                    <xsd:attribute use="optional" name="alternateAmount"
+                                                                   type="xsd:string"/>
+                                                    <xsd:attribute use="optional" name="alternateCurrency"
+                                                                   type="xsd:string"/>
+                                                    <xsd:attribute use="optional" name="currency" type="xsd:string"/>
+                                                  </xsd:extension>
+                                                </xsd:simpleContent>
+                                              </xsd:complexType>
+                                            </xsd:element>
+                                          </xsd:all>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                      <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Description">
+                                        <xsd:complexType>
+                                          <xsd:simpleContent>
+                                            <xsd:extension base="xsd:string">
+                                              <xsd:attribute use="optional" name="xmlLang" type="xsd:string"/>
+                                            </xsd:extension>
+                                          </xsd:simpleContent>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                    </xsd:all>
+                                    <xsd:attribute use="optional" name="percentageRate" type="xsd:string"/>
+                                    <xsd:attribute use="optional" name="category" type="xsd:string"/>
+                                    <xsd:attribute use="optional" name="purpose" type="xsd:string"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:all>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element nillable="true" minOccurs="0" name="Distribution">
+                            <xsd:complexType>
+                              <xsd:all>
+                                <xsd:element nillable="true" minOccurs="0" name="Accounting">
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element nillable="true" maxOccurs="unbounded" minOccurs="0" name="Segment">
+                                        <xsd:complexType>
+                                          <xsd:simpleContent>
+                                            <xsd:extension base="xsd:string">
+                                              <xsd:attribute use="optional" name="description" type="xsd:string"/>
+                                              <xsd:attribute use="optional" name="id" type="xsd:string"/>
+                                              <xsd:attribute use="optional" name="type" type="xsd:string"/>
+                                            </xsd:extension>
+                                          </xsd:simpleContent>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                    </xsd:sequence>
+                                    <xsd:attribute use="optional" name="DistributionCharge" type="xsd:string"/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element nillable="true" minOccurs="0" name="Charge">
+                                  <xsd:complexType>
+                                    <xsd:all>
+                                      <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="Money">
+                                        <xsd:complexType>
+                                          <xsd:simpleContent>
+                                            <xsd:extension base="xsd:decimal">
+                                              <xsd:attribute use="optional" name="alternateAmount" type="xsd:string"/>
+                                              <xsd:attribute use="optional" name="alternateCurrency" type="xsd:string"/>
+                                              <xsd:attribute use="optional" name="currency" type="xsd:string"/>
+                                            </xsd:extension>
+                                          </xsd:simpleContent>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                    </xsd:all>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:all>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="SpendDetail">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="extService"
+                                             type="xsd:string"/>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element nillable="true" maxOccurs="1" minOccurs="0" name="MasterAgreementIDInfo">
+                            <xsd:complexType>
+                              <xsd:simpleContent>
+                                <xsd:extension base="xsd:string">
+                                  <xsd:attribute use="optional" name="agreementID" type="xsd:string"/>
+                                </xsd:extension>
+                              </xsd:simpleContent>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                        <xsd:attribute use="optional" name="requiresServiceEntry" type="xsd:string"/>
+                        <xsd:attribute use="optional" name="itemType" type="xsd:string"/>
+                        <xsd:attribute use="optional" name="parentLineNumber" type="xsd:string"/>
+                        <xsd:attribute use="optional" name="requestedDeliveryDate" type="xsd:dateTime"/>
+                        <xsd:attribute use="optional" name="quantity" type="xsd:decimal"/>
+                        <xsd:attribute use="optional" name="lineNumber" type="xsd:string"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+            <xsd:attribute use="optional" name="deploymentMode" type="xsd:string"/>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:all>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
